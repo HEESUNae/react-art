@@ -1,52 +1,18 @@
-import { useEffect, useState } from 'react';
-import { getAllPerfomance } from '../api/all-perfomance.api';
+import { Suspense } from 'react';
+import { PerfomanceCard } from '../../shared/ui/pfm-card/prm-card';
+import { useHomeModel } from './home.model';
 import { StyledHome } from './home.style';
 
-type pfmListType = Record<string, string>;
-
 export default function Home() {
-  const [lists, setLists] = useState<pfmListType[] | null>(null);
-
-  const getPerfomance = async () => {
-    const data = await getAllPerfomance(21, 1);
-    setLists(data);
-  };
-
-  useEffect(() => {
-    getPerfomance();
-  }, []);
-
-  if (!lists) return <></>;
+  const { pfmItems } = useHomeModel();
 
   return (
     <StyledHome>
       <div className="banner"></div>
       <div className="all-perfomance-container">
-        {lists.map((item: pfmListType) => (
-          <figure className="pfm-card" key={item.LOCAL_ID}>
-            <div className="img-wrap">
-              <img src={item.IMAGE_OBJECT} />
-            </div>
-            <figcaption className="pfm-info">
-              <div className="title-wrap">
-                <p className="badge">
-                  {item.GENRE} | {item.EVENT_PERIOD}
-                </p>
-                <p className="preiod">{item.PERIOD}</p>
-              </div>
-              <p className="title">{item.TITLE}</p>
-              {/* <p>{item.DESCRIPTION}</p> */}
-              <p>{item.CHARGE}</p>
-              {/* <p>{item.CONTACT_POINT}</p>
-              <p>{item.CONTRIBUTOR}</p>
-              <p>{item.CNTC_INSTT_NM}</p>
-              <p>{item.AUDIENCE}</p> */}
-              <a href={item.URL} className="btn-more" target="_blank">
-                자세히보기
-              </a>
-            </figcaption>
-          </figure>
-        ))}
+        <Suspense fallback={<>logg..</>}>
+          <PerfomanceCard data={pfmItems || []} />
+        </Suspense>
       </div>
     </StyledHome>
   );

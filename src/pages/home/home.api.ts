@@ -1,5 +1,6 @@
-import { axiosInstance } from '../../../app/instance';
+import { axiosInstance } from '../../app/instance';
 
+// 전체 공연 리스트
 export const getAllPerfomance = async (numOfRows: number, currentPage: number) => {
   try {
     const res = await axiosInstance.get(
