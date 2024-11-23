@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/home/home';
-import Event from '../pages/event/event';
+import Novel from '../pages/novel/novel';
 import Art from '../pages/art/art';
-import Layout from '../widgets/layout';
+import Layout from '../widgets/layout/layout';
 
 export const router = createBrowserRouter(
   [
@@ -11,7 +11,7 @@ export const router = createBrowserRouter(
       element: <Layout />,
       children: [
         { path: '', element: <Home /> }, // 기본 라우트
-        { path: 'event', element: <Event /> }, // /about 라우트
+        { path: 'novel', element: <Novel /> }, // /about 라우트
         { path: 'art', element: <Art /> }, // /about 라우트
       ],
     },

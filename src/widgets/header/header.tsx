@@ -9,7 +9,7 @@ export default function Header() {
       </Link>
       <nav>
         <Link to="/art">공연/전시</Link>
-        <Link to="/event">이벤트</Link>
+        <Link to="/novel">문장웹진</Link>
       </nav>
     </StyledHeader>
   );

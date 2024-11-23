@@ -1,18 +1,17 @@
-import { Suspense } from 'react';
 import { PerfomanceCard } from '../../shared/ui/pfm-card/prm-card';
 import { useHomeModel } from './home.model';
 import { StyledHome } from './home.style';
 
 export default function Home() {
-  const { pfmItems } = useHomeModel();
+  const { fetchPfm } = useHomeModel();
+
+  if (!fetchPfm.isSuccess) return <></>;
 
   return (
     <StyledHome>
       <div className="banner"></div>
       <div className="all-perfomance-container">
-        <Suspense fallback={<>logg..</>}>
-          <PerfomanceCard data={pfmItems || []} />
-        </Suspense>
+        <PerfomanceCard data={fetchPfm.data} />
       </div>
     </StyledHome>
   );

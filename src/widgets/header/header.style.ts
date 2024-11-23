@@ -3,6 +3,7 @@ export const StyledHeader = styled.header`
   padding: 1.6rem 2rem;
   display: flex;
   align-items: center;
+  width: -webkit-fill-available;
   a {
     display: inline-block;
   }

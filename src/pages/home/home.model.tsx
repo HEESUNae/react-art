@@ -1,20 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getAllPerfomance } from './home.api';
-import { PfmListType } from '../../shared/types/pfm-list.type';
 
 export const useHomeModel = () => {
-  const [pfmItems, setPfmItems] = useState<PfmListType[] | null>(null);
-
-  const getPerfomance = useCallback(async () => {
-    const data = await getAllPerfomance(21, 1);
-    setPfmItems(data);
-  }, []);
-
-  useEffect(() => {
-    getPerfomance();
-  }, []);
+  // 공연 정보
+  const fetchPfm = useQuery({
+    queryKey: ['ptmList'],
+    queryFn: async () => await getAllPerfomance(21, 1),
+  });
 
   return {
-    pfmItems,
+    fetchPfm,
   };
 };
