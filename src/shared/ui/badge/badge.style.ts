@@ -9,5 +9,6 @@ export const StyledBadge = styled.div`
     font-size: 1.2rem;
     display: inline-flex;
     margin-right: 0;
+    width: fit-content;
   }
 `;

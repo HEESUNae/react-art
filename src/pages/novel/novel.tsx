@@ -1,16 +1,16 @@
-import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useState } from 'react';
+import { Markdown } from '../../shared/ui/markdown/markdown';
 import { useNovelModel } from './novel.model';
 import { StyledNovel } from './novel.style';
 
 export default function Novel() {
   const { fetchNovel } = useNovelModel();
-  const [detail, setDetail] = useState<any>('');
+  const [markContent, setMarkContent] = useState<any>('');
 
   useEffect(() => {
     if (!fetchNovel.data) return;
-    setDetail(detail || fetchNovel.data[0]?.DESCRIPTION);
-  }, [fetchNovel, detail]);
+    setMarkContent(markContent || fetchNovel.data[0]?.DESCRIPTION);
+  }, [fetchNovel, markContent]);
 
   if (!fetchNovel.isSuccess) return <></>;
 
@@ -32,7 +32,7 @@ export default function Novel() {
                 <td>{item.rnum}</td>
                 <td>{item.GENRE_NM}</td>
                 <td>
-                  <p onClick={() => setDetail(item.DESCRIPTION)}>{item.TITLE}</p>
+                  <p onClick={() => setMarkContent(item.DESCRIPTION)}>{item.TITLE}</p>
                 </td>
                 <td>{item.VIEW_COUNT}</td>
               </tr>
@@ -40,7 +40,7 @@ export default function Novel() {
           </tbody>
         </table>
         <div className="novel-viewer">
-          <MDEditor.Markdown source={detail} style={{ backgroundColor: 'transparent' }} />
+          <Markdown content={markContent} />
         </div>
       </div>
     </StyledNovel>

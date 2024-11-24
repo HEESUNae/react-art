@@ -15,4 +15,17 @@ export const StyledButton = styled.button`
       display: inline-block;
     }
   }
+  &.page {
+    background-color: #ddd;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      background-color: #000;
+      color: #fff;
+    }
+  }
 `;

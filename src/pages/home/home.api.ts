@@ -8,7 +8,7 @@ export const getAllPerfomance = async (numOfRows: number, currentPage: number) =
         import.meta.env.VITE_PFM_API_KEY
       }&numOfRows=${numOfRows}&pageNo=${currentPage}`
     );
-    return res.data.response.body.items.item || [];
+    return res.data.response.body || [];
   } catch (e) {
     console.log(e);
     return [];
