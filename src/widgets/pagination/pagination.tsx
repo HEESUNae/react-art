@@ -46,9 +46,12 @@ export function Pagination({ fetchPfm, currentPage, currentTab, setCurrentTab, s
 
   return (
     <StyledPagination>
-      <button onClick={handlePrev}>
-        <img src="/icons/arrow-right.svg" alt="이전" className="prev-arrow" />
-      </button>
+      {currentPage - oneTabCount > 0 && (
+        <button onClick={handlePrev}>
+          <img src="/icons/arrow-right.svg" alt="이전" className="prev-arrow" />
+        </button>
+      )}
+
       {pageCount.map((pageNum: number) => (
         <button
           key={pageNum}
@@ -58,9 +61,11 @@ export function Pagination({ fetchPfm, currentPage, currentTab, setCurrentTab, s
           {pageNum}
         </button>
       ))}
-      <button onClick={handleNext}>
-        <img src="/icons/arrow-right.svg" alt="다음" />
-      </button>
+      {oneTabCount * (currentTab + 1) < totalPage && (
+        <button onClick={handleNext}>
+          <img src="/icons/arrow-right.svg" alt="다음" />
+        </button>
+      )}
     </StyledPagination>
   );
 }

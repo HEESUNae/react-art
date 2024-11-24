@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { getAllPerfomance } from './home.api';
 
-export const useHomeModel = (pageNo: number) => {
+export const useHomeModel = (currentPage: number) => {
   // 공연 정보
   const fetchPfm = useQuery({
-    queryKey: ['ptmList', pageNo],
-    queryFn: async () => await getAllPerfomance(15, pageNo),
+    queryKey: ['ptmList', currentPage],
+    queryFn: async () => await getAllPerfomance(15, currentPage),
     staleTime: 5000,
   });
 
