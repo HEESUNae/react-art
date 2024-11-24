@@ -22,12 +22,11 @@ export default function Home() {
         -
       </div>
       <Pagination
-        numOfRows={fetchPfm.data.numOfRows}
+        fetchPfm={fetchPfm}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
-        totalCount={fetchPfm.data.totalCount}
       />
     </StyledHome>
   );

@@ -6,7 +6,7 @@ export const useHomeModel = (pageNo: number) => {
   const fetchPfm = useQuery({
     queryKey: ['ptmList', pageNo],
     queryFn: async () => await getAllPerfomance(15, pageNo),
-    staleTime: 5000, // 데이터 신선도 유지 시간 설정
+    staleTime: 5000,
   });
 
   return {

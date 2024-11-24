@@ -2,24 +2,16 @@ import React, { SetStateAction, useEffect, useState } from 'react';
 import { StyledPagination } from './pagination.style';
 
 interface PaginationProps {
-  numOfRows: number;
-  totalCount: number;
+  fetchPfm: any;
   currentPage: number;
   currentTab: number;
   setCurrentTab: React.Dispatch<SetStateAction<number>>;
   setCurrentPage: React.Dispatch<SetStateAction<number>>;
 }
 
-export function Pagination({
-  numOfRows,
-  totalCount,
-  currentPage,
-  currentTab,
-  setCurrentTab,
-  setCurrentPage,
-}: PaginationProps) {
+export function Pagination({ fetchPfm, currentPage, currentTab, setCurrentTab, setCurrentPage }: PaginationProps) {
   const oneTabCount: number = 5;
-  const totalPage = Math.ceil(totalCount / numOfRows);
+  const totalPage = Math.ceil(fetchPfm.data.totalCount / fetchPfm.data.numOfRows);
   const [pageCount, setPageCount] = useState<number[]>([]);
 
   // 이전페이지
@@ -47,15 +39,9 @@ export function Pagination({
 
   // 페이지 숫자 배열 생성
   useEffect(() => {
-    setPageCount(
-      Array.from(
-        {
-          length:
-            oneTabCount + oneTabCount * currentTab >= totalPage ? totalPage - oneTabCount * currentTab : oneTabCount,
-        },
-        (_, idx) => idx + (oneTabCount * currentTab + 1)
-      )
-    );
+    const start = oneTabCount * currentTab + 1;
+    const end = Math.min(start + oneTabCount - 1, totalPage);
+    setPageCount(Array.from({ length: end - start + 1 }, (_, idx) => idx + start));
   }, [currentTab]);
 
   return (
