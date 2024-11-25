@@ -2,45 +2,61 @@ import { useEffect, useState } from 'react';
 import { Markdown } from '../../shared/ui/markdown/markdown';
 import { useNovelModel } from './novel.model';
 import { StyledNovel } from './novel.style';
+import Button from '../../shared/ui/button/button';
 
 export default function Novel() {
-  const { fetchNovel } = useNovelModel();
+  const [checkedTab, setCheckedTab] = useState('비평');
+  const { fetchNovel, novelItems } = useNovelModel(checkedTab);
   const [markContent, setMarkContent] = useState<any>('');
 
   useEffect(() => {
     if (!fetchNovel.data) return;
-    setMarkContent(markContent || fetchNovel.data[0]?.DESCRIPTION);
-  }, [fetchNovel, markContent]);
+    setMarkContent(fetchNovel.data[0]?.DESCRIPTION);
+  }, [fetchNovel, setMarkContent]);
+
+  useEffect(() => {
+    if (!markContent) return;
+    setMarkContent(markContent);
+  }, [markContent]);
 
   if (!fetchNovel.isSuccess) return <></>;
 
   return (
     <StyledNovel>
       <div className="inner">
-        <table className="table-list">
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>분류</th>
-              <th>제목</th>
-              <th>조회수</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fetchNovel.data.map((item: any) => (
-              <tr key={item.rnum}>
-                <td>{item.rnum}</td>
-                <td>{item.GENRE_NM}</td>
-                <td>
-                  <p onClick={() => setMarkContent(item.DESCRIPTION)}>{item.TITLE}</p>
-                </td>
-                <td>{item.VIEW_COUNT}</td>
+        <div className="tab-container">
+          {novelItems.map((novel) => (
+            <Button className={`tab ${checkedTab === novel ? 'active' : ''}`} onClick={() => setCheckedTab(novel)}>
+              {novel}
+            </Button>
+          ))}
+        </div>
+        <div className="content-container">
+          <table className="table-list">
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>분류</th>
+                <th>제목</th>
+                <th>조회수</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="novel-viewer">
-          <Markdown content={markContent} />
+            </thead>
+            <tbody>
+              {fetchNovel.data.map((item: any) => (
+                <tr key={item.rnum}>
+                  <td>{item.rnum}</td>
+                  <td>{item.GENRE_NM}</td>
+                  <td>
+                    <p onClick={() => setMarkContent(item.DESCRIPTION)}>{item.TITLE}</p>
+                  </td>
+                  <td>{item.VIEW_COUNT}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="novel-viewer">
+            <Markdown content={markContent} />
+          </div>
         </div>
       </div>
     </StyledNovel>

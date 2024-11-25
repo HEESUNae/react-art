@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledButton = styled.button`
   border: 0;
   cursor: pointer;
+  border-radius: 0.4rem;
   &.primary {
     margin-top: auto;
     margin-left: auto;
@@ -25,6 +26,13 @@ export const StyledButton = styled.button`
     justify-content: center;
     &.active {
       background-color: #000;
+      color: #fff;
+    }
+  }
+  &.tab {
+    background-color: #ddd;
+    &.active {
+      background-color: teal;
       color: #fff;
     }
   }

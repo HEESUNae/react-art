@@ -3,6 +3,17 @@ import styled from 'styled-components';
 export const StyledNovel = styled.div`
   padding: 2rem;
   .inner {
+  }
+  .tab-container {
+    display: inline-flex;
+    gap: 1rem;
+    button {
+      min-width: 6rem;
+      padding: 0.8rem;
+      background-color: #eee;
+    }
+  }
+  .content-container {
     display: flex;
     align-items: flex-start;
     gap: 3rem;
