@@ -3,6 +3,7 @@ import { Markdown } from '../../shared/ui/markdown/markdown';
 import { useNovelModel } from './novel.model';
 import { StyledNovel } from './novel.style';
 import Button from '../../shared/ui/button/button';
+import { SubBanner } from '../../widgets/sub-banner/sub-banner';
 
 export default function Novel() {
   const [checkedTab, setCheckedTab] = useState('비평');
@@ -23,6 +24,7 @@ export default function Novel() {
 
   return (
     <StyledNovel>
+      <SubBanner content={'비평, 시, 소설 등 다채로운 문학 웹진의 세계를 경험해보세요'} bgUrl='/images/novel.jpg'/>
       <div className="inner">
         <div className="tab-container">
           {novelItems.map((novel) => (

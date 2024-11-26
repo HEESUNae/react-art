@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 export const StyledNovel = styled.div`
   padding: 2rem;
-  .inner {
-  }
   .tab-container {
     display: inline-flex;
     gap: 1rem;

@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const StyledArt = styled.div`
-  .inner {
-    padding: 2rem;
+  padding: 2rem;
+  .movie-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     gap: 1rem;
+    margin: 5rem 0;
     .movie {
       position: relative;
-      /* border-radius: 0.4rem; */
+      cursor: pointer;
+      border-radius: 0.4rem;
       overflow: hidden;
     }
     .youtube {
