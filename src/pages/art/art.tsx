@@ -16,19 +16,19 @@ export default function Art() {
 
   return (
     <StyledArt>
-      <SubBanner content={'예술의 전당에서 제공하는 다양한 영상 자료를 만나보세요'} bgUrl={'/images/movie.jpg'}/>
+      <SubBanner content={'예술의 전당에서 제공하는 다양한 영상 자료를 만나보세요'} bgUrl={'/images/movie.jpg'} />
       <div className="inner">
         <div className="movie-container">
-        {movieData.map((item: MovieDataType) => (
-          <div className="movie" key={item.id}>
-            <a href={item.url} className="art-title-bar" target='_blank'>
-              <img src={item.referenceIdentifier} alt="" />ㄴ
-              <div className="youtube">
-                <img src="/icons/play.svg" alt="" />
-              </div>
-            </a>
-          </div>
-        ))}
+          {movieData.map((item: MovieDataType) => (
+            <div className="movie" key={item.id}>
+              <a href={item.url} className="art-title-bar" target="_blank">
+                <img src={item.referenceIdentifier} alt="" />ㄴ
+                <div className="youtube">
+                  <img src="/icons/play.svg" alt="" />
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </StyledArt>

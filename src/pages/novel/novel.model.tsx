@@ -6,7 +6,7 @@ export const useNovelModel = (checkedTab: string) => {
   // 비평
   const fetchNovel = useQuery({
     queryKey: ['novel', checkedTab],
-    queryFn: async () => await getNovelItems(20, 1, checkedTab),
+    queryFn: async () => await getNovelItems(16, 1, checkedTab),
   });
 
   return {

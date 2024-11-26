@@ -24,6 +24,12 @@ export const StyledNovel = styled.div`
     thead {
       padding: 1rem;
     }
+    tr {
+      &.active {
+        background: #f4ffff;
+        font-weight: 600;
+      }
+    }
     th {
       background-color: #f3f3f3;
     }
@@ -41,7 +47,20 @@ export const StyledNovel = styled.div`
     padding: 2rem;
     overflow-y: auto;
     min-height: 50rem;
-    max-height: 72.5rem;
+    max-height: 57rem;
     border: 0.1rem solid;
+  }
+
+  @media (max-width: 900px) {
+    .content-container {
+      flex-direction: column;
+      .novel-viewer {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .table-list {
+        width: 100%;
+      }
+    }
   }
 `;

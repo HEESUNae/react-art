@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PfmListType } from '../../shared/types/pfm-list.type';
-import { PerfomanceCard } from '../../shared/ui/pfm-card/prm-card';
+import { PerfomanceCard } from '../../widgets/pfm-card/prm-card';
 import { Pagination } from '../../widgets/pagination/pagination';
 import { useHomeModel } from './home.model';
 import { StyledHome } from './home.style';

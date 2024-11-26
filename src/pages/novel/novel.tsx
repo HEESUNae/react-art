@@ -24,7 +24,7 @@ export default function Novel() {
 
   return (
     <StyledNovel>
-      <SubBanner content={'비평, 시, 소설 등 다채로운 문학 웹진의 세계를 경험해보세요'} bgUrl='/images/novel.jpg'/>
+      <SubBanner content={'비평, 시, 소설 등 다채로운 문학 웹진의 세계를 경험해보세요'} bgUrl="/images/novel.jpg" />
       <div className="inner">
         <div className="tab-container">
           {novelItems.map((novel) => (
@@ -34,6 +34,9 @@ export default function Novel() {
           ))}
         </div>
         <div className="content-container">
+          <div className="novel-viewer">
+            <Markdown content={markContent} />
+          </div>
           <table className="table-list">
             <thead>
               <tr>
@@ -45,7 +48,7 @@ export default function Novel() {
             </thead>
             <tbody>
               {fetchNovel.data.map((item: any) => (
-                <tr key={item.rnum}>
+                <tr key={item.rnum} className={item.DESCRIPTION === markContent ? 'active' : ''}>
                   <td>{item.rnum}</td>
                   <td>{item.GENRE_NM}</td>
                   <td>
@@ -56,9 +59,6 @@ export default function Novel() {
               ))}
             </tbody>
           </table>
-          <div className="novel-viewer">
-            <Markdown content={markContent} />
-          </div>
         </div>
       </div>
     </StyledNovel>

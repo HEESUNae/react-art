@@ -16,6 +16,7 @@ html {
   font-size: 1.6rem;
   color: #444;
   font-family: 'Pretendard-Regular', 'sans-serif';
+  word-break: keep-all;
 }
 
 li {
@@ -37,4 +38,10 @@ button {
 .inner {
   max-width: 144rem;
   margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 8px;
+  }
 }

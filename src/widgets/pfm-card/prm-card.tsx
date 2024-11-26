@@ -1,6 +1,6 @@
-import { PfmListType } from '../../types/pfm-list.type';
-import { Badge } from '../badge/badge';
-import Button from '../button/button';
+import { PfmListType } from '../../shared/types/pfm-list.type';
+import { Badge } from '../../shared/ui/badge/badge';
+import Button from '../../shared/ui/button/button';
 import { StyledPfmCard } from './pfm-card.style';
 
 interface PerfomanceCardProps {
