@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: '//api.kcisa.kr',
+  baseURL: 'https://api.kcisa.kr',
   timeout: 1000,
 });
