@@ -14,7 +14,7 @@ export const StyledArt = styled.div`
       overflow: hidden;
     }
     .youtube {
-      background: rgba(0, 0, 0, 0.5);
+      /* background: rgba(0, 0, 0, 0.5); */
       position: absolute;
       top: 0;
       left: 0;
