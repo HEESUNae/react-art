@@ -2,6 +2,9 @@
 
 예술의전당 무료 API를 활용하여 만든 토이 프로젝트입니다.
 
+<img src="./sample01.png" width="50%" alt="main"/>
+<img src="./sample02.png" width="50%" alt="main"/>
+<img src="./sample03.png" width="50%" alt="main"/>
 
 ### 작업내용
 
